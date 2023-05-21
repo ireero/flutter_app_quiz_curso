@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/background_color.dart';
+import 'start_screen.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: Scaffold(
-      body: BackgroundColor(),
-    ),
+  MaterialApp(
+      home: Scaffold(
+    body: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Colors.deepPurple, Colors.purple],
+                begin: AlignmentDirectional.topEnd,
+                end: Alignment.bottomLeft)),
+        child: const StartScreen()),
   ));
 }
