@@ -6,7 +6,7 @@ class QuestionsScreen extends StatefulWidget {
 
   @override
   State<QuestionsScreen> createState() {
-    return _QuestionsScreen();
+    return _QuestionsScreenState();
   }
 
 }
@@ -14,7 +14,7 @@ class QuestionsScreen extends StatefulWidget {
 
 
 
-class _QuestionsScreen extends State<QuestionsScreen> {
+class _QuestionsScreenState extends State<QuestionsScreen> {
 
   @override
   Widget build(context) {
