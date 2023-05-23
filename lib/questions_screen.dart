@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'answer_button.dart';
+import 'data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
@@ -10,36 +12,39 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
+
+  var currentQuestionIndex = 0;
+
   @override
   Widget build(context) {
-    return Center(
+
+    final currentQuestion = questions[currentQuestionIndex];
+
+    void answerQuestions() {
+      setState(() {
+        currentQuestionIndex++;
+      });
+    }
+
+    return Container(
+      margin: const EdgeInsets.all(40),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('The question...'),
+          Text(
+            currentQuestion.text,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
+            textAlign: TextAlign.center,
+          ),
           const SizedBox(
             height: 30,
           ),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text(
-              'Aswer 1'
-            ),
-
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text(
-                'Aswer 2'
-            ),
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text(
-                'Aswer 3'
-            ),
-          ),
-
+          ...currentQuestion.getShuffledAnswers().map((item) {
+            return AnswerButton(item, answerQuestions);
+          }),
         ],
       ),
     );
